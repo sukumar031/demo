@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Shree Veda Bhakta Sabha Trust</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--saffron:#D4541A;--saffron-light:#F5E8DC;--saffron-deep:#8B3610;--gold:#C8941A;--gold-light:#FDF3DC;--cream:#FDFAF4;--parchment:#F5EFE0;--bark:#4A2E0E;--bark-mid:#7A4D20;--bark-light:#A8723A;--text-body:#3D2510;--text-muted:#7A5A3A;--text-light:#A8845A;--white:#FFFFFF}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--cream);color:var(--text-body);overflow-x:hidden;line-height:1.7}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(253,250,244,0.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid rgba(212,84,26,0.12);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:68px;transition:box-shadow 0.3s ease}
+nav.scrolled{box-shadow:0 2px 24px rgba(74,46,14,0.08)}
+.nav-logo{display:flex;align-items:center;gap:12px;text-decoration:none}
+.logo-placeholder{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--saffron-light),var(--gold-light));border:2px solid var(--saffron);display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:600;color:var(--saffron-deep);flex-shrink:0;overflow:hidden}
+.logo-placeholder img{width:100%;height:100%;object-fit:cover;border-radius:50%}
+.nav-brand{font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:600;color:var(--bark);line-height:1.2}
+.nav-brand span{display:block;font-size:10px;font-family:'Inter',sans-serif;font-weight:400;color:var(--text-muted);letter-spacing:0.08em;text-transform:uppercase}
+.nav-links{display:flex;align-items:center;gap:2rem;list-style:none}
+.nav-links a{font-size:13px;font-weight:500;letter-spacing:0.03em;color:var(--text-muted);text-decoration:none;transition:color 0.2s;position:relative}
+.nav-links a::after{content:'';position:absolute;bottom:-3px;left:0;right:0;height:1.5px;background:var(--saffron);transform:scaleX(0);transform-origin:left;transition:transform 0.25s ease}
+.nav-links a:hover{color:var(--saffron)}
+.nav-links a:hover::after{transform:scaleX(1)}
+.nav-donate{background:var(--saffron);color:var(--white)!important;padding:8px 20px;border-radius:40px;font-size:13px!important;font-weight:500!important;letter-spacing:0.04em;text-decoration:none;transition:background 0.2s,transform 0.15s!important}
+.nav-donate:hover{background:var(--saffron-deep)!important;transform:translateY(-1px)}
+.nav-donate::after{display:none!important}
+.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:120px 2rem 80px;position:relative;overflow:hidden}
+.hero-bg-pattern{position:absolute;inset:0;background-image:radial-gradient(circle at 20% 20%,rgba(212,84,26,0.06) 0%,transparent 50%),radial-gradient(circle at 80% 80%,rgba(200,148,26,0.06) 0%,transparent 50%),radial-gradient(circle at 50% 50%,rgba(212,84,26,0.03) 0%,transparent 70%);pointer-events:none}
+.mandala-ring{position:absolute;border-radius:50%;border:1px solid rgba(212,84,26,0.1);animation:slowSpin 60s linear infinite}
+.mandala-ring:nth-child(1){width:600px;height:600px;top:50%;left:50%;transform:translate(-50%,-50%)}
+.mandala-ring:nth-child(2){width:800px;height:800px;top:50%;left:50%;transform:translate(-50%,-50%);animation-direction:reverse;animation-duration:90s;border-color:rgba(200,148,26,0.07)}
+.mandala-ring:nth-child(3){width:1000px;height:1000px;top:50%;left:50%;transform:translate(-50%,-50%);animation-duration:120s;border-color:rgba(212,84,26,0.04)}
+@keyframes slowSpin{from{transform:translate(-50%,-50%) rotate(0deg)}to{transform:translate(-50%,-50%) rotate(360deg)}}
+.hero-eyebrow{font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--saffron);font-weight:500;margin-bottom:1.2rem;opacity:0;transform:translateY(20px);animation:fadeUp 0.8s ease 0.2s forwards}
+.hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2.6rem,5vw,4.2rem);font-weight:500;line-height:1.15;color:var(--bark);margin-bottom:0.6rem;opacity:0;transform:translateY(24px);animation:fadeUp 0.9s ease 0.35s forwards}
+.hero-title em{font-style:italic;color:var(--saffron)}
+.hero-subtitle-motto{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-style:italic;color:var(--bark-light);margin-bottom:1.6rem;opacity:0;transform:translateY(20px);animation:fadeUp 0.9s ease 0.5s forwards}
+.hero-desc{max-width:580px;font-size:1rem;color:var(--text-muted);line-height:1.8;margin-bottom:2.4rem;opacity:0;transform:translateY(20px);animation:fadeUp 0.9s ease 0.65s forwards}
+.hero-ctas{display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;opacity:0;transform:translateY(20px);animation:fadeUp 0.9s ease 0.8s forwards}
+.btn-primary{background:var(--saffron);color:var(--white);padding:13px 32px;border-radius:40px;font-size:14px;font-weight:500;letter-spacing:0.04em;text-decoration:none;transition:background 0.2s,transform 0.15s,box-shadow 0.2s;box-shadow:0 4px 20px rgba(212,84,26,0.25)}
+.btn-primary:hover{background:var(--saffron-deep);transform:translateY(-2px);box-shadow:0 8px 28px rgba(212,84,26,0.35)}
+.btn-secondary{border:1.5px solid var(--saffron);color:var(--saffron);padding:13px 32px;border-radius:40px;font-size:14px;font-weight:500;letter-spacing:0.04em;text-decoration:none;transition:background 0.2s,transform 0.15s}
+.btn-secondary:hover{background:var(--saffron-light);transform:translateY(-2px)}
+.scroll-hint{position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-light);opacity:0;animation:fadeIn 1s ease 1.5s forwards}
+.scroll-hint-line{width:1px;height:40px;background:linear-gradient(to bottom,var(--saffron),transparent);animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.3}}
+@keyframes fadeUp{to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{to{opacity:1}}
+section{padding:80px 2rem}
+.section-eyebrow{font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--saffron);font-weight:500;margin-bottom:0.8rem;display:block}
+.section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3vw,2.6rem);font-weight:500;color:var(--bark);line-height:1.2;margin-bottom:1.2rem}
+.section-body{font-size:1rem;color:var(--text-muted);line-height:1.85;max-width:620px}
+.about-section{background:var(--white);display:flex;align-items:center;justify-content:center}
+.about-inner{max-width:1100px;width:100%;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+.founder-card{background:var(--parchment);border-radius:20px;padding:2.5rem;position:relative;overflow:hidden}
+.founder-card::before{content:'॥';position:absolute;right:1.5rem;top:1rem;font-size:4rem;color:rgba(212,84,26,0.08);font-family:'Cormorant Garamond',serif}
+.founder-avatar{width:80px;height:80px;border-radius:50%;background:linear-gradient(135deg,var(--saffron-light),var(--gold-light));border:3px solid rgba(212,84,26,0.2);display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:1.8rem;color:var(--saffron-deep);margin-bottom:1.2rem}
+.founder-name{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:600;color:var(--bark);margin-bottom:0.3rem}
+.founder-title{font-size:12px;color:var(--text-light);letter-spacing:0.05em;margin-bottom:1rem}
+.founder-bio{font-size:0.9rem;color:var(--text-muted);line-height:1.8}
+.vm-section{background:var(--bark);color:var(--white)}
+.vm-inner{max-width:1100px;margin:0 auto}
+.vm-section .section-eyebrow{color:var(--gold)}
+.vm-section .section-title{color:var(--white);margin-bottom:3rem}
+.vm-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem}
+.vm-card{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:16px;padding:2.2rem;transition:background 0.3s,transform 0.3s}
+.vm-card:hover{background:rgba(255,255,255,0.09);transform:translateY(-4px)}
+.vm-card-icon{width:44px;height:44px;border-radius:10px;background:rgba(212,84,26,0.25);display:flex;align-items:center;justify-content:center;margin-bottom:1.2rem;font-size:1.3rem}
+.vm-card h3{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:600;color:var(--gold);margin-bottom:0.8rem}
+.vm-card ul{list-style:none;display:flex;flex-direction:column;gap:0.5rem}
+.vm-card ul li{font-size:0.9rem;color:rgba(255,255,255,0.72);padding-left:1.2rem;position:relative}
+.vm-card ul li::before{content:'—';position:absolute;left:0;color:var(--saffron);font-size:0.8rem}
+.vm-motto{margin-top:3rem;padding:1.8rem 2.2rem;background:rgba(212,84,26,0.15);border-left:3px solid var(--saffron);border-radius:0 12px 12px 0}
+.vm-motto p{font-family:'Cormorant Garamond',serif;font-size:1.35rem;font-style:italic;color:var(--white);margin-bottom:0.4rem}
+.vm-motto small{font-size:0.82rem;color:rgba(255,255,255,0.5)}
+.patashala-section{background:var(--cream)}
+.patashala-inner{max-width:1100px;margin:0 auto}
+.patashala-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;margin-top:3rem}
+.facility-list{display:flex;flex-direction:column;gap:1rem}
+.facility-item{display:flex;align-items:flex-start;gap:1rem;padding:1.2rem 1.4rem;background:var(--white);border-radius:12px;border:1px solid rgba(212,84,26,0.1);transition:border-color 0.2s,box-shadow 0.2s}
+.facility-item:hover{border-color:rgba(212,84,26,0.3);box-shadow:0 4px 20px rgba(212,84,26,0.08)}
+.facility-icon{width:36px;height:36px;flex-shrink:0;border-radius:8px;background:var(--saffron-light);display:flex;align-items:center;justify-content:center;font-size:1rem}
+.facility-item h4{font-size:0.9rem;font-weight:500;color:var(--bark);margin-bottom:0.15rem}
+.facility-item p{font-size:0.82rem;color:var(--text-muted)}
+.patashala-desc{font-size:1rem;color:var(--text-muted);line-height:1.85}
+.activities-section{background:var(--parchment)}
+.activities-inner{max-width:1100px;margin:0 auto}
+.activities-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem;margin-top:3rem}
+.activity-card{background:var(--white);border-radius:16px;padding:1.8rem 1.4rem;text-align:center;border:1px solid rgba(212,84,26,0.08);transition:transform 0.25s,box-shadow 0.25s}
+.activity-card:hover{transform:translateY(-5px);box-shadow:0 12px 32px rgba(212,84,26,0.1)}
+.activity-emoji{font-size:1.8rem;margin-bottom:0.8rem;display:block}
+.activity-card h4{font-family:'Cormorant Garamond',serif;font-size:1rem;font-weight:600;color:var(--bark);margin-bottom:0.4rem}
+.activity-card p{font-size:0.8rem;color:var(--text-muted)}
+.donate-section{background:linear-gradient(160deg,var(--saffron-light) 0%,var(--gold-light) 100%)}
+.donate-inner{max-width:900px;margin:0 auto;text-align:center}
+.donate-inner .section-title{margin-bottom:0.8rem}
+.donate-inner .section-body{margin:0 auto 2.5rem}
+.donate-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin-bottom:2.5rem}
+.donate-card{background:var(--white);border-radius:16px;padding:1.8rem 1.4rem;text-align:center;border:1.5px solid transparent;cursor:pointer;transition:border-color 0.2s,transform 0.2s,box-shadow 0.2s;position:relative;overflow:hidden}
+.donate-card::before{content:'';position:absolute;inset:0;background:var(--saffron-light);opacity:0;transition:opacity 0.2s}
+.donate-card:hover{border-color:var(--saffron);transform:translateY(-3px);box-shadow:0 10px 30px rgba(212,84,26,0.15)}
+.donate-card:hover::before{opacity:1}
+.donate-card *{position:relative;z-index:1}
+.donate-card-icon{font-size:2rem;margin-bottom:0.8rem;display:block}
+.donate-card h4{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;color:var(--bark);margin-bottom:0.4rem}
+.donate-card p{font-size:0.82rem;color:var(--text-muted)}
+.donate-main-btn{display:inline-flex;align-items:center;gap:0.5rem;background:var(--saffron);color:var(--white);padding:15px 42px;border-radius:40px;font-size:15px;font-weight:500;letter-spacing:0.04em;text-decoration:none;box-shadow:0 6px 28px rgba(212,84,26,0.3);transition:background 0.2s,transform 0.2s,box-shadow 0.2s}
+.donate-main-btn:hover{background:var(--saffron-deep);transform:translateY(-2px);box-shadow:0 10px 36px rgba(212,84,26,0.4)}
+.contact-section{background:var(--white)}
+.contact-inner{max-width:700px;margin:0 auto;text-align:center}
+.contact-details{display:flex;flex-direction:column;gap:1rem;margin-top:2rem;align-items:center}
+.contact-row{display:flex;align-items:center;gap:0.8rem;font-size:0.95rem;color:var(--text-muted)}
+.contact-row strong{color:var(--bark);font-weight:500}
+.contact-icon{width:32px;height:32px;border-radius:8px;background:var(--saffron-light);display:flex;align-items:center;justify-content:center;font-size:0.9rem;flex-shrink:0}
+footer{background:var(--bark);color:rgba(255,255,255,0.6);text-align:center;padding:2rem;font-size:0.82rem;line-height:1.8}
+footer strong{color:rgba(255,255,255,0.9)}
+.footer-om{font-family:'Cormorant Garamond',serif;font-size:2rem;color:var(--gold);display:block;margin-bottom:0.5rem;opacity:0.7}
+.reveal{opacity:0;transform:translateY(32px);transition:opacity 0.7s ease,transform 0.7s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-delay-1{transition-delay:0.1s}
+.reveal-delay-2{transition-delay:0.2s}
+.reveal-delay-3{transition-delay:0.3s}
+@media(max-width:768px){.nav-links{display:none}.about-inner,.vm-grid,.patashala-grid{grid-template-columns:1fr}.activities-grid{grid-template-columns:repeat(2,1fr)}.donate-cards{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<nav id="main-nav">
+  <a href="#home" class="nav-logo">
+    <div class="logo-placeholder">ॐ</div>
+    <div class="nav-brand">Shree Veda Bhakta Sabha<span>Charitable Trust</span></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#vision">Vision & Mission</a></li>
+    <li><a href="#patashala">Patashala</a></li>
+    <li><a href="#activities">Activities</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#donate" class="nav-donate">Donate</a></li>
+  </ul>
+</nav>
+<section id="home" class="hero">
+  <div class="hero-bg-pattern"></div>
+  <div class="mandala-ring"></div><div class="mandala-ring"></div><div class="mandala-ring"></div>
+  <p class="hero-eyebrow">Est. 2024 · Salem, Tamil Nadu</p>
+  <h1 class="hero-title">Preserving the Sacred Light of<br/><em>Vedic Tradition</em></h1>
+  <p class="hero-subtitle-motto">"Vedo Rakshati Rakshitah" — The Vedas protect those who protect them.</p>
+  <p class="hero-desc">Shree Veda Bhakta Sabha Trust is a charitable organisation dedicated to the preservation, protection, and propagation of Sanatana Dharma and Vedic traditions through education, culture, and community.</p>
+  <div class="hero-ctas">
+    <a href="#donate" class="btn-primary">Support Our Mission</a>
+    <a href="#about" class="btn-secondary">Learn More</a>
+  </div>
+  <div class="scroll-hint"><div class="scroll-hint-line"></div>Explore</div>
+</section>
+<section id="about" class="about-section">
+  <div class="about-inner">
+    <div>
+      <span class="section-eyebrow reveal">About the Trust</span>
+      <h2 class="section-title reveal reveal-delay-1">Rooted in Faith,<br/>Guided by Tradition</h2>
+      <p class="section-body reveal reveal-delay-2">Founded in 2024 under the guidance of Brahmashri Sriram Ghanapathigal, the Trust nurtures Vedic learning, cultural values, and spiritual awareness among future generations. Our mission is to safeguard the timeless wisdom of the Vedas through the traditional Guru–Shishya Parampara and to provide a platform for spiritual, educational, and charitable activities.</p>
+    </div>
+    <div class="founder-card reveal reveal-delay-2">
+      <div class="founder-avatar">ब्र</div>
+      <div class="founder-name">Brahmashri Sriram Ghanapathigal</div>
+      <div class="founder-title">Founder · Salem</div>
+      <p class="founder-bio">Completing his Aksharabhyasam to Ghanantham studies at Veda Bhavan, Hyderabad, Brahmashri Sriram Ghanapathigal established this Trust with a vision to carry forward the sacred flame of Vedic knowledge for generations to come.</p>
+    </div>
+  </div>
+</section>
+<section id="vision" class="vm-section">
+  <div class="vm-inner">
+    <span class="section-eyebrow reveal">Purpose &amp; Direction</span>
+    <h2 class="section-title reveal reveal-delay-1">Our Vision &amp; Mission</h2>
+    <div class="vm-grid">
+      <div class="vm-card reveal reveal-delay-1">
+        <div class="vm-card-icon">🌅</div>
+        <h3>Our Vision</h3>
+        <ul>
+          <li>Preserve and protect Vedic traditions</li>
+          <li>Promote Vedic education through Gurukula methods</li>
+          <li>Foster spiritual, cultural, and moral values</li>
+          <li>Support deserving Vedic students</li>
+          <li>Conduct religious and charitable activities</li>
+        </ul>
+      </div>
+      <div class="vm-card reveal reveal-delay-2">
+        <div class="vm-card-icon">🪔</div>
+        <h3>Our Mission</h3>
+        <ul>
+          <li>Sustain Veda Patashalas for living Vedic learning</li>
+          <li>Organise Veda Parayanams and spiritual discourses</li>
+          <li>Serve communities through Annadanam</li>
+          <li>Keep Dharma-related traditions alive and flourishing</li>
+          <li>Build a bridge from ancient wisdom to future generations</li>
+        </ul>
+      </div>
+    </div>
+    <div class="vm-motto reveal reveal-delay-3">
+      <p>"Vedo Rakshati Rakshitah"</p>
+      <small>The Vedas protect those who protect them — the guiding motto of our Trust</small>
+    </div>
+  </div>
+</section>
+<section id="patashala" class="patashala-section">
+  <div class="patashala-inner">
+    <span class="section-eyebrow reveal">Our School</span>
+    <h2 class="section-title reveal reveal-delay-1">SVBS Yajur Veda Patashala</h2>
+    <div class="patashala-grid">
+      <p class="patashala-desc reveal reveal-delay-1">The Trust operates a traditional Yajur Veda Patashala with students from various parts of India. Following the ancient Gurukula system, the Patashala emphasises discipline, devotion, Vedic chanting, Sanskrit learning, and character development — nurturing the next generation of Vedic scholars in an environment of sacred learning.</p>
+      <div class="facility-list">
+        <div class="facility-item reveal reveal-delay-1"><div class="facility-icon">📚</div><div><h4>Traditional Vedic Education</h4><p>Authentic Gurukula curriculum and Veda chanting</p></div></div>
+        <div class="facility-item reveal reveal-delay-2"><div class="facility-icon">🏠</div><div><h4>Boarding &amp; Lodging</h4><p>Full residential care for Vedic students</p></div></div>
+        <div class="facility-item reveal reveal-delay-3"><div class="facility-icon">🌅</div><div><h4>Daily Sandhyavandanam</h4><p>Daily Veda Parayanam and spiritual discipline</p></div></div>
+        <div class="facility-item reveal"><div class="facility-icon">🍱</div><div><h4>Annadanam</h4><p>Free wholesome meals for all students</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="activities" class="activities-section">
+  <div class="activities-inner">
+    <span class="section-eyebrow reveal">What We Do</span>
+    <h2 class="section-title reveal reveal-delay-1">Our Activities</h2>
+    <div class="activities-grid">
+      <div class="activity-card reveal reveal-delay-1"><span class="activity-emoji">🕉️</span><h4>Veda Parayanam</h4><p>Sacred recitations preserving the oral Vedic tradition</p></div>
+      <div class="activity-card reveal reveal-delay-2"><span class="activity-emoji">🪷</span><h4>Guru Pooja</h4><p>Honouring the lineage of Vedic teachers and scholars</p></div>
+      <div class="activity-card reveal reveal-delay-3"><span class="activity-emoji">📖</span><h4>Vedic Classes</h4><p>Structured education in Vedic chanting and Sanskrit</p></div>
+      <div class="activity-card reveal reveal-delay-1"><span class="activity-emoji">🔔</span><h4>Dharma Pracharam</h4><p>Spreading awareness of Sanatana Dharma values</p></div>
+      <div class="activity-card reveal reveal-delay-2"><span class="activity-emoji">🍽️</span><h4>Annadanam</h4><p>Free meals for students and the community</p></div>
+      <div class="activity-card reveal reveal-delay-3"><span class="activity-emoji">🎙️</span><h4>Spiritual Discourses</h4><p>Talks by learned scholars on Vedic philosophy</p></div>
+      <div class="activity-card reveal reveal-delay-1"><span class="activity-emoji">🪁</span><h4>Religious Festivals</h4><p>Celebrations upholding cultural and religious heritage</p></div>
+      <div class="activity-card reveal reveal-delay-2"><span class="activity-emoji">🎓</span><h4>Scholar Support</h4><p>Financial and material aid for dedicated Vedic students</p></div>
+    </div>
+  </div>
+</section>
+<section id="donate" class="donate-section">
+  <div class="donate-inner">
+    <span class="section-eyebrow reveal">Make a Difference</span>
+    <h2 class="section-title reveal reveal-delay-1">Support the Living Vedas</h2>
+    <p class="section-body reveal reveal-delay-2">The Vedas are India's most ancient spiritual treasure. Preserving them requires dedicated teachers, students, and community support. Your contribution helps sustain Vedic education, student welfare, and the continued practice of Sanatana Dharma.</p>
+    <div class="donate-cards">
+      <div class="donate-card reveal reveal-delay-1"><span class="donate-card-icon">🏛️</span><h4>Building Fund</h4><p>Help us build and maintain facilities for our Patashala</p></div>
+      <div class="donate-card reveal reveal-delay-2"><span class="donate-card-icon">🎒</span><h4>For Vidyarthis</h4><p>Support food, shelter, and education for Vedic students</p></div>
+      <div class="donate-card reveal reveal-delay-3"><span class="donate-card-icon">🪔</span><h4>For Pooja</h4><p>Fund sacred rituals, ceremonies, and religious activities</p></div>
+    </div>
+    <a href="#contact" class="donate-main-btn reveal">🙏 &nbsp; Donate Now</a>
+  </div>
+</section>
+<section id="contact" class="contact-section">
+  <div class="contact-inner">
+    <span class="section-eyebrow reveal">Reach Out</span>
+    <h2 class="section-title reveal reveal-delay-1">Contact Us</h2>
+    <p class="section-body reveal reveal-delay-2" style="margin:0 auto">We welcome inquiries about donations, Patashala admissions, and collaboration. Reach us through any of the channels below.</p>
+    <div class="contact-details">
+      <div class="contact-row reveal"><div class="contact-icon">🏛️</div><div><strong>Shree Veda Bhakta Sabha Trust</strong>, Veda Vidya Bhavanam, Salem</div></div>
+      <div class="contact-row reveal reveal-delay-1"><div class="contact-icon">👤</div><div>Founder: <strong>Brahmashri Sriram Ghanapathigal</strong></div></div>
+      <div class="contact-row reveal reveal-delay-2"><div class="contact-icon">📞</div><div><a href="tel:7020845739" style="color:var(--saffron);text-decoration:none;font-weight:500">70208 45739</a></div></div>
+    </div>
+  </div>
+</section>
+<footer>
+  <span class="footer-om">ॐ</span>
+  <strong>Shree Veda Bhakta Sabha Trust</strong><br/>
+  Veda Vidya Bhavanam · Salem · Est. 2024<br/><br/>
+  "Vedo Rakshati Rakshitah" — The Vedas protect those who protect them.
+</footer>
+<script>
+const nav=document.getElementById('main-nav');
+window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',window.scrollY>40)},{passive:true});
+const reveals=document.querySelectorAll('.reveal');
+const io=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target)}})},{threshold:0.12,rootMargin:'0px 0px -40px 0px'});
+reveals.forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
